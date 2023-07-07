@@ -1,0 +1,32 @@
+.dark {
+	background-color: #18181b;
+	color: #fff;
+}
+
+.light {
+	background-color: #fff;
+	color: #000;
+}
+
+.text-box-wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.content-wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.result-text {
+	text-align: center;
+}
+
+.compare-button {
+	height: 40px;
+}
+
+.compare-button:hover {
+	cursor: pointer;
+}
