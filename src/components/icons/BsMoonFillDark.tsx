@@ -1,5 +1,5 @@
 import { IconContext } from "react-icons"
-import { BsMoonFill } from "react-icons/Bs"
+import { BsMoonFill } from "react-icons/bs"
 
 export const BsMoonFillDark = () => {
 	return (

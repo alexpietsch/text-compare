@@ -1,5 +1,5 @@
 import "./Header.css"
-import { BsSunFill } from "react-icons/Bs"
+import { BsSunFill } from "react-icons/bs"
 import { BsMoonFillDark } from "./icons/BsMoonFillDark"
 
 type HeaderProps = {
