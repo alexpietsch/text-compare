@@ -3,10 +3,13 @@ import { useState, useEffect } from "react"
 import { Header } from "./components/Header"
 import { TextBox } from "./components/TextBox"
 import { useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { useLocalStorage } from "./hooks/useLocalStorage"
+
 import "./App.css"
 
 function App() {
-	const [theme, setTheme] = useState("dark")
+	const [theme, setTheme] = useLocalStorage<string>("theme", "dark")
 
 	const textBoxOne = useRef<HTMLTextAreaElement>(null)
 	const textBoxTwo = useRef<HTMLTextAreaElement>(null)
@@ -22,7 +25,7 @@ function App() {
 			<div className={`${theme}`}>
 				<Header theme={theme} setTheme={setTheme} />
 				<div className="content-wrapper">
-					<button
+					<Button
 						className="compare-button"
 						onClick={() => {
 							const textBoxOneValue = textBoxOne.current?.value
@@ -36,14 +39,14 @@ function App() {
 						}}
 					>
 						Compare
-					</button>
+					</Button>
 					<p
 						className="result-text"
 						style={{ color: compareResult.isSame ? "#2ecc71" : "#d91e18" }}
 					>
 						{compareResult.text}
 					</p>
-					<div className="text-box-wrapper">
+					<div className="text-box-wrapper p-10">
 						<TextBox textBoxRef={textBoxOne} />
 						<TextBox textBoxRef={textBoxTwo} />
 					</div>

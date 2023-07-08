@@ -1,3 +1,5 @@
+import { Textarea } from "@/components/ui/textarea"
+
 import "./TextBox.css"
 
 type TextBoxProps = {
@@ -6,5 +8,9 @@ type TextBoxProps = {
 
 export const TextBox = ({ textBoxRef }: TextBoxProps) => {
 	//TODO: Replace textbox with some way to highlight differences (e.g. div with contentEditable)
-	return <textarea ref={textBoxRef} className="text-box" />
+	return (
+		<div className="p-1 w-[48%]">
+			<Textarea ref={textBoxRef} className="resize-y" placeholder="Paste text here." />
+		</div>
+	)
 }
