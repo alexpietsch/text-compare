@@ -1,12 +1,16 @@
-import { ThemeContext } from "./contexts/themeContext"
-import { useState, useEffect } from "react"
-import { Header } from "./components/Header"
-import { TextBox } from "./components/TextBox"
-import { useRef } from "react"
+import { Header } from "@/components/Header"
+import { TextBox } from "@/components/TextBox"
 import { Button } from "@/components/ui/button"
-import { useLocalStorage } from "./hooks/useLocalStorage"
-
+import { useLocalStorage } from "@/hooks/useLocalStorage"
+import { useEffect, useRef, useState } from "react"
 import "./App.css"
+import Footer from "./components/Footer"
+import { ThemeContext } from "./contexts/themeContext"
+
+type CompareResult = {
+	text: string
+	isSame: boolean
+}
 
 function App() {
 	const [theme, setTheme] = useLocalStorage<string>("theme", "dark")
@@ -18,7 +22,7 @@ function App() {
 		document.body.className = theme
 	}, [theme])
 
-	const [compareResult, setCompareResult] = useState({ text: "", isSame: false })
+	const [compareResult, setCompareResult] = useState<CompareResult>()
 
 	return (
 		<ThemeContext.Provider value={theme}>
@@ -40,17 +44,23 @@ function App() {
 					>
 						Compare
 					</Button>
-					<p
-						className="result-text"
-						style={{ color: compareResult.isSame ? "#2ecc71" : "#d91e18" }}
-					>
-						{compareResult.text}
-					</p>
+					{compareResult && (
+						<p
+							className="result-text rounded-lg p-2 m-3 font-semibold"
+							style={{
+								color: compareResult.isSame ? "#2ecc71" : "#d91e18",
+								backgroundColor: theme == "dark" ? "#17171c" : "#f1f5f9",
+							}}
+						>
+							{compareResult.text}
+						</p>
+					)}
 					<div className="text-box-wrapper p-10">
 						<TextBox textBoxRef={textBoxOne} />
 						<TextBox textBoxRef={textBoxTwo} />
 					</div>
 				</div>
+				<Footer />
 			</div>
 		</ThemeContext.Provider>
 	)
