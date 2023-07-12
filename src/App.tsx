@@ -55,7 +55,7 @@ function App() {
 							{compareResult.text}
 						</p>
 					)}
-					<div className="text-box-wrapper p-10">
+					<div className="text-box-wrapper p-10 flex flex-col sm:flex-row">
 						<TextBox textBoxRef={textBoxOne} />
 						<TextBox textBoxRef={textBoxTwo} />
 					</div>
